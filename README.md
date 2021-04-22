@@ -1,14 +1,7 @@
-# Autograding Example: Java
-This example project is written in Java, and tested with Gradle/JUnit.
+# Furnace-DIP Kata
 
-### The assignment
-The tests are currently failing because of an output mismatch. Fixing the `System.out.println` in the main method will make the tests green.
+Kata to practice the "intercepting filter" design pattern, a small app simulating a Registration, Authentication and Authorization process on a client (Client) that wants to access a vehicle (Target).
+Going through a process of executing tasks (FilterChain) executed by a task manager (FilterManager).
 
-### Setup command
-N/A
-
-### Run command
-`gradle test`
-
-### Notes
-- The JDK is installed on GitHub Actions machines, so you're also able to directly invoke `javac`, `java`, or any other CLI command included in the JDK. 
+UML Diagram of the code:
+![UML Diagram](./diagram-Mollapp.png "UML")
