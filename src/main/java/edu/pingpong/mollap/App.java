@@ -3,6 +3,7 @@ package edu.pingpong.mollap;
 import edu.pingpong.mollap.client.Mollapp;
 import edu.pingpong.mollap.filter.Autenticate;
 import edu.pingpong.mollap.filter.Autorize;
+import edu.pingpong.mollap.filter.Register;
 import edu.pingpong.mollap.manager.FilterManager;
 import edu.pingpong.mollap.target.Vehicle;
 
@@ -11,28 +12,28 @@ public class App {
     public static void main(String[] args) {
 
         /**
-         * Configuració del programador de tasques
-         * del sistema amb el tipus de target triat:
-         * des de vehicles a qualsevol cosa que admiteix
-         * la recepció d'un missatge.
-
+         * System FilterManager configuration
+         * with the specified target.
+         */
         FilterManager filterManager = new FilterManager(new Vehicle());
 
         /**
-         * Afegir al sistema les tasques que volem que el sistema
-         * executi al rebre la petició del client.
-
-        filterManager.setTasca(new Autenticate());
-        filterManager.setTasca(new Autorize());
+         * We add to the system the tasks that
+         * we want the system to execute when we
+         * receive the client's request.
+         */
+        filterManager.setTask(new Autenticate());
+        filterManager.setTask(new Autorize());
+        filterManager.setTaskAt(0, new Register());
 
         /**
-         * Configuració de l'app client per a que
-         * executi les tasques programades i
-         * enviï el misstage al sistema.
-
+         * Configuration of the client app to
+         * execute the scheduled tasks and
+         * send the message to the system.
+         */
         Mollapp mollapp = new Mollapp();
-        mollapp.setManager(programadorTasques);
-        mollapp.sendRequest("Francesc"); */
+        mollapp.setFilterManager(filterManager);
+        mollapp.sendRequest("Francesc");
     }
 }
 
